@@ -1,0 +1,31 @@
+#include <LiquidCrystal.h>
+
+
+
+LiquidCrystal  lcd(12,11,10,9,8,7);
+
+
+
+#include <SoftwareSerial.h>
+SoftwareSerial btbaglan(6,5);
+
+float sicaklik;
+
+void setup(){
+  int btbaglan(9600);
+  lcd.begin(16,2);
+
+}
+
+
+
+void loop(){
+  if(btbaglan.available()){
+    sicaklik=btbaglan.read();
+
+
+    lcd.setCursor(0,1);
+    lcd.print(sicaklik);
+    delay(100);
+  }
+}
