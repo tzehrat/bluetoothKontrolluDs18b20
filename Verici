@@ -1,0 +1,37 @@
+#include <OneWire.h>
+#include <DallasTemperature.h>
+#include <SoftwareSerial.h>
+
+
+
+
+SoftwareSerial btbaglan(10,11);
+OneWire onewire(2);
+DallasTemperature sensors(&onewire);
+
+void setup(){
+  btbaglan.begin(9600);
+  sensors.begin();
+  
+}
+
+
+
+
+
+void loop(){
+
+  sensors.requestTemperatures();
+
+  if (btbaglan.available()){
+
+
+
+    btbaglan.print("SICAKLIK DEĞER");
+
+    btbaglan.write(sensors.getTempCByIndex(0));
+
+    delay(200);
+    
+  }
+}
